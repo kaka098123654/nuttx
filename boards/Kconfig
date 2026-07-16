@@ -1992,6 +1992,14 @@ config ARCH_BOARD_WEACT_STM32H750
 	---help---
 		This is WeAct MiniSTM32H7xx (STM32H750VB) board.
 
+config ARCH_BOARD_PX4_FMU_V6C
+	bool "Holybro Pixhawk 6C (PX4 FMUv6C)"
+	depends on ARCH_CHIP_STM32H743II
+	select ARCH_HAVE_LEDS
+	---help---
+		Holybro Pixhawk 6C flight controller (FMUv6C) based on the
+		STMicro STM32H743II MCU.
+
 config ARCH_BOARD_NUCLEO_H723ZG
 	bool "STM32H723 Nucleo H723ZG"
 	depends on ARCH_CHIP_STM32H723ZG
@@ -3858,6 +3866,7 @@ config ARCH_BOARD
 	default "nucleo-g0b1re"                if ARCH_BOARD_NUCLEO_G0B1RE
 	default "weact-stm32h743"              if ARCH_BOARD_WEACT_STM32H743
 	default "weact-stm32h750"              if ARCH_BOARD_WEACT_STM32H750
+	default "px4-fmu-v6c"                  if ARCH_BOARD_PX4_FMU_V6C
 	default "nucleo-h723zg"                if ARCH_BOARD_NUCLEO_H723ZG
 	default "nucleo-h743zi"                if ARCH_BOARD_NUCLEO_H743ZI
 	default "nucleo-h743zi2"               if ARCH_BOARD_NUCLEO_H743ZI2
@@ -4621,6 +4630,9 @@ source "boards/arm/stm32h7/weact-stm32h743/Kconfig"
 endif
 if ARCH_BOARD_WEACT_STM32H750
 source "boards/arm/stm32h7/weact-stm32h750/Kconfig"
+endif
+if ARCH_BOARD_PX4_FMU_V6C
+source "boards/arm/stm32h7/px4-fmu-v6c/Kconfig"
 endif
 if ARCH_BOARD_NUCLEO_H723ZG
 source "boards/arm/stm32h7/nucleo-h723zg/Kconfig"
